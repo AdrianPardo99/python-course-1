@@ -112,10 +112,41 @@ En python los métodos y funciones son fragmentos de código los cuales permiten
 ```python
 # Definicion de método o función
   def nameMethodOrFunc(params=""):
-    #code and more code if you want to save the return value you only need to save the value in another variable
+    #code and more code if you want to save the return value you only need to save the value
+      # in another variable
     return value
 
 # Lambda
   variable= lambda param1,param2: param1+param2 # operation_code_example
+
+```
+
+# Modulo SQLite3 #
+Es un modulo para manejar/crear bases de datos las cuales son accesibles por el mismo lenguaje
+```python
+  import sqlite3
+
+# Creación de la base de datos
+  conexion=sqlite3.connect(name)    # Retorna el manejador de la conexión a la base de datos
+
+
+# Creación de tablas
+  cursor=conexion.cursor()
+  cursor.execute("CREATE TABLE IF NOT EXISTS {} VALUES ({})".format(nameTable,attrTable))
+  conexion.commit()
+
+
+# Inserción de datos sin HARDCODING
+  cursor=conexion.cursor()
+  tuplaData=(param1,param2,param3)
+  # Si la tabla tiene 3 valores
+  cursor.execute("INSERT INTO {} VALUES (?,?,?)".format(nameTable),tuplaData)
+
+# Inserción multiple sin HARDCODING
+  listaData=[(param1,param2,param3),(param4,param5,param6),(param7,param8,param9)]
+  cursor.executemany("INSERT INTO {} VALUES (?,?,?)".format(nameTable),listaData)
+
+# Al final de la inserción
+  conexion.commit()
 
 ```
