@@ -94,3 +94,28 @@ Estructura constante no mutable.
 
   dic.pop(keyS)
 ```
+
+### Algunas cosas útiles de los diccionarios ###
+Los diccionarios también pueden ser útiles para usar el estándar de JSON el cual en algunas cosas puede interactuar con aplicaciones que usen este estándar.
+
+```python
+import json
+# Dictionary to JSON
+  varJSON=json.dump(dictionary)
+
+# JSON to Dictionary
+  varDic=json.loads(jsonVariable)
+```
+
+# Definición de métodos y funciones, Funciones Lambda #
+En python los métodos y funciones son fragmentos de código los cuales permiten realizar operaciones que tengan diversa repetitividad a la hora de trabajar
+```python
+# Definicion de método o función
+  def nameMethodOrFunc(params=""):
+    #code and more code if you want to save the return value you only need to save the value in another variable
+    return value
+
+# Lambda
+  variable= lambda param1,param2: param1+param2 # operation_code_example
+
+```
