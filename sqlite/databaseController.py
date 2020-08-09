@@ -7,18 +7,11 @@ import sqlite3
     Fecha de modificación: 09/08/2020
     GitHub: AdrianPardo99
     Licencia Creative Commons CC BY-SA
-"""
 
-
-
-"""
     @name       ->  Es el nombre bajo el cual se resguardara el archivo de sqlite3
 """
 def create_database(name):
-    conexion=sqlite3.connect(name)
-    return conexion
-
-
+    return sqlite3.connect(name)
 
 """
     @conexion   ->  Es la conexion a la base de datos existente gracias al create_database
@@ -44,8 +37,11 @@ def create_table_with_params(conexion,table,params):
     @params     ->  Son los campos/parametros que componen a la tabla
     @tuple      ->  Es la tupla de datos que evitaran un hardcoding de los mismo y añadiran una capa de seguridad
 """
-def insert_into_table(conexion,table,params,tuple):
+def insert_into_table(conexion,table,params,data):
     cursorTable=conexion.cursor()
     print(f'Query execute: \n INSERT INTO {table} VALUES ({params})')
-    cursorTable.execute(f'INSERT INTO {table} VALUES ({params})',tuple)
+    if type(data) is list:
+        cursorTable.executemany(f'INSERT INTO {table} VALUES ({params})',data)
+    elif type(data) is tuple:
+        cursorTable.execute(f'INSERT INTO {table} VALUES ({params})',data)
     conexion.commit()
