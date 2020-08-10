@@ -149,4 +149,41 @@ Es un modulo para manejar/crear bases de datos las cuales son accesibles por el 
 # Al final de la inserción
   conexion.commit()
 
+
+# Consultar todos los datos
+  cursorTable=conexion.cursor()
+  cursorTable.execute("SELECT*FROM {}".format(nameTable))
+  rows=cursorTable.fetchall()
+
+# Consultar todos los datos con sentencia where sin HARDCODING
+  cursorTable=conexion.cursor()
+  cursorTable.execute("SELECT*FROM {} WHERE {}".format(table,whereTab),dataWhere)
+  # @whereTab viene construido de la siguiente forma parameter_value = ?
+  # @dataWhere es una tupla de datos que llenan los parametros de '?'
+  rows=cursorTable.fetchall()
+
+    # Nota el comodin '*' puede ser cambiado por atributos específicos,
+    # @whereTab puede ir acompañado por comodines de orden y de álgebra relacional
+
+# Print rows de fetchall()
+  for row in rows:
+    print(f'{row}')
+
+
+# Borrar datos
+  cursorTable=conexion.cursor()
+  cursorTable.execute("DELETE FROM {} where {}".format(table,whereTab),dataWhere)
+  conexion.commit()
+
+
+# Actualización de datos
+  cursorTable=conexion.cursor()
+  cursorTable.execute("UPDATE {} SET {} where {}".format(table,dataSet,whereTab),data)
+  # @dataSet: Son los datos que van a ser modificados param = ?, param2 = ?
+  # @data:  Es la tupla de datos que van a llenarse desde los parametros de @dataSet y @whereTab
+  conexion.commit()
+
+
+# Cerrar conexión de la base de datos
+  conexion.close()
 ```
