@@ -187,3 +187,5 @@ Es un modulo para manejar/crear bases de datos las cuales son accesibles por el 
 # Cerrar conexión de la base de datos
   conexion.close()
 ```
+# Modulo tkinter #
+El modulo tkinter es un modulo gráfico que permite crear interfaces de usuario
