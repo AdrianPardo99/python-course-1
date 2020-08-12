@@ -121,6 +121,22 @@ En python los métodos y funciones son fragmentos de código los cuales permiten
 
 ```
 
+# Docstring #
+En python es sencillo crear pequeña documentación de los métodos, funciones y clases los cuales pueden ir acompañados de la siguiente estructura y pueden ser obtenidos con un método específico
+```python
+  def method():
+    """
+    Doc about method()
+    Description, etc.
+    """
+    #Code and more code
+  help(method)
+```
+Por otro lado en la consola de Windows, Linux o MAC es posible generar o ver la documentación de un archivo a través de los siguientes comandos
+```bash
+  pydoc <Path>/file.py
+```
+
 # Modulo SQLite3 #
 Es un modulo para manejar/crear bases de datos las cuales son accesibles por el mismo lenguaje
 ```python
