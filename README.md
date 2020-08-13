@@ -1,4 +1,4 @@
-# Curso básico de algunos modulos de Python 3 #
+# Curso básico de algunos módulos de Python 3 #
 
 __Nota: En linux hay un header el cual permite ejecutar tipo binario los archivos el cual esta acompañado en el inicio del archivo e incluso bajo el comando "file" la descripción del archivo es "Archivo.py: Python script, ASCII text executable"__
 
@@ -129,7 +129,7 @@ En python es sencillo crear pequeña documentación de los métodos, funciones y
     Doc about method()
     Description, etc.
     """
-    #Code and more code
+    # Code and more code
   help(method)
 ```
 Por otro lado en la consola de Windows, Linux o MAC es posible generar o ver la documentación de un archivo a través de los siguientes comandos
@@ -137,8 +137,53 @@ Por otro lado en la consola de Windows, Linux o MAC es posible generar o ver la 
   pydoc <Path>/file.py
 ```
 
-# Modulo SQLite3 #
-Es un modulo para manejar/crear bases de datos las cuales son accesibles por el mismo lenguaje
+# módulo Doctest #
+Es un módulo que permite realizar pruebas automáticas las cuales permiten hacer un test del código escrito:
+```python
+  def method(params):
+    """
+    Doc and description
+    >>> method(paramsPrube1)
+    result
+
+    >>> method(paramsPrube2)
+    result-2
+
+    >>> method(paramsPrube3)
+    result-3
+
+    """
+    # Code and more code
+    return something
+  import doctest
+  doctest.testmod()
+```
+Al realizar esto nos permitirá realizar el test de method el cual según nuestra descripción es que espera como valor de retorno result y el módulo buscara que coincida con el con lo que tienes escrito, para finalmente mostrar en pantalla si el test fue correcto o no
+
+# módulo Unittest #
+Parecido a Doctest es un módulo que permite realizar pruebas automáticas, con la diferencia que estos test pueden ser programados sin que estos se encuentren en el apartado de la documentación.
+```python
+  def method(params):
+    """
+    Doc and description
+    """
+    # Code and more code
+    return something
+
+  import unittest
+  class pruebas(unittest.TestCase):
+    def test(self):
+      self.assertEqual(method(paramsPrube1),result)
+      self.assertEqual(method(paramsPrube2),result-2)
+      self.assertEqual(method(paramsPrube3),result-3)
+
+  if __name__ == '__main__':
+    unittest.main()
+```
+Con esto en la ejecución de nuestro código nos dirá los test de éxito y los test de fallo.
+
+# módulo SQLite3 #
+Es un módulo para manejar/crear bases de datos las cuales son accesibles por el mismo lenguaje
 ```python
   import sqlite3
 
@@ -203,5 +248,5 @@ Es un modulo para manejar/crear bases de datos las cuales son accesibles por el 
 # Cerrar conexión de la base de datos
   conexion.close()
 ```
-# Modulo tkinter #
-El modulo tkinter es un modulo gráfico que permite crear interfaces de usuario
+# módulo tkinter #
+El módulo tkinter es un módulo gráfico que permite crear interfaces de usuario
